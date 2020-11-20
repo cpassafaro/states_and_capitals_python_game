@@ -100,8 +100,8 @@ def play_game(states1):
     print(f'Correct: {correct_score} Incorrect:{incorrect_score}')
     play_again = input('Would you like to play again? y or n:')
     if(play_again == 'y'):
+        ##taken from https://stackoverflow.com/questions/21446278/sort-python-list-of-dictionaries-by-key-if-key-exists
         featured = sorted(states1, key=lambda k: ("Incorrect" not in k, k.get("Incorrect", None)))
-        print(featured)
         game_intro(featured)
 
     else:
@@ -111,6 +111,6 @@ def play_game(states1):
 
 
 
-game_intro(states)
+game_intro(states1)
 
 
