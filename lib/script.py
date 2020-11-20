@@ -1,5 +1,7 @@
 from capitals import states
+import random 
 
+random.shuffle(states)
 # print(states)
 
 
@@ -19,12 +21,12 @@ def game_intro():
 def play_game():
     incorrect_score = 0
     correct_score = 0
-    states1 = [{'name': 'Virginia', 'capital': 'Richmond'}, {'name': 'Washington', 'capital': 'Olympia'}, {'name': 'West Virginia', 'capital': 'Charleston'}, {'name': 'Wisconsin', 'capital': 'Madison'}, {'name': 'Wyoming', 'capital': 'Cheyenne'}]
-    #for loop for states and capitals
-    for i in range(len(states1)):
+    #test states below!!!!!!!!!!!!!!!!!!!!!!!!!!
+    # states1 = [{'name': 'Virginia', 'capital': 'Richmond'}, {'name': 'Washington', 'capital': 'Olympia'}, {'name': 'West Virginia', 'capital': 'Charleston'}, {'name': 'Wisconsin', 'capital': 'Madison'}, {'name': 'Wyoming', 'capital': 'Cheyenne'}]
+    for i in range(len(states)):
         # print(state[i])
-        state = states1[i]['name']
-        capital = states1[i]['capital']
+        state = states[i]['name']
+        capital = states[i]['capital']
     
         answer = input(f'What is the capital of {state}?:')
         if(answer == capital):
@@ -35,31 +37,14 @@ def play_game():
             print(f'Incorrect, the answer is {capital}')
             incorrect_score = incorrect_score + 1
             print(f'Correct: {correct_score} Incorrect:{incorrect_score}')
-
-    print(f'Final Score: Correct: {correct_score} Incorrect:{incorrect_score}')
+    final_score = correct_score - incorrect_score
+    print(f'Total Score:{final_score}')
+    print(f'Correct: {correct_score} Incorrect:{incorrect_score}')
     play_again = input('Would you like to play again? y or n:')
     if(play_again == 'y'):
         game_intro()
+    else:
+        print('Thanks for playing!')
 
 
 game_intro()
-#prompt user to identify the capital associated with a state
-#run through all fify states
-#keep a running tally of the users scores
-#after getting through all 50 states ask if user wants to play again
-
-
-#  if(state == 'Wyoming'):
-#             if(answer == capital):
-#                 print(f'Correct the answer is {answer}')
-#                 correct_score = correct_score + 1
-#                 print(correct_score)
-#                 game = input('Would you like to play again? y or n:')
-#                     if(game == 'y'):
-#                         game_intro()
-#                     else:
-#                         exit()
-#             else:
-#                 print(f'Incorrect, the answer is {answer}')
-#                 incorrect_score = incorrect_score + 1
-#                 print(incorrect_score)
