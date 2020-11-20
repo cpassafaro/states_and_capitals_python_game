@@ -46,68 +46,71 @@ import random
 # game_intro()
 
 ###bonuses#####################################
-
+##test states
+states1 = [{'name': 'Virginia', 'capital': 'Richmond'}, {'name': 'Washington', 'capital': 'Olympia'}, {'name': 'West Virginia', 'capital': 'Charleston'}, {'name': 'Wisconsin', 'capital': 'Madison'}, {'name': 'Wyoming', 'capital': 'Cheyenne'}]
 
 random.shuffle(states)
 # print(states)
 #game being called
-def game_intro():
+def game_intro(states1):
     print('Welcome to States and Capitals! The game were we give you the state and you give us the capital')
     user = input('Ready to play? y or n:')
     if(user == 'y'):
-        play_game()
+        play_game(states1)
     else:
         print('exit')
 
 
+states1 = [{'name': 'Virginia', 'capital': 'Richmond'}, {'name': 'Washington', 'capital': 'Olympia'}, {'name': 'West Virginia', 'capital': 'Charleston'}, {'name': 'Wisconsin', 'capital': 'Madison'}, {'name': 'Wyoming', 'capital': 'Cheyenne'}]
 
-def play_game():
+def play_game(states1):
     incorrect_score = 0
     correct_score = 0
-    print(states)
-    #test states below!
-    # states1 = [{'name': 'Virginia', 'capital': 'Richmond'}, {'name': 'Washington', 'capital': 'Olympia'}, {'name': 'West Virginia', 'capital': 'Charleston'}, {'name': 'Wisconsin', 'capital': 'Madison'}, {'name': 'Wyoming', 'capital': 'Cheyenne'}]
-    for i in range(len(states)):
-        # print(states1)
-        state = states[i]['name']
-        capital = states[i]['capital']
+
+
+    for i in range(len(states1)):
+        state = states1[i]['name']
+        capital = states1[i]['capital']
     
         answer = input(f'What is the capital of {state}?:')
         if(answer == capital):
             print(f'Correct, the answer is {capital}')
             correct_score = correct_score + 1
             print(f'Correct: {correct_score} Incorrect:{incorrect_score}')
-            #trying to make new key
-            if 'Correct' in states[i].keys():   
-                states[i]['Correct'] += 1
-                print(states[i])
+            # #trying to make new key
+            if 'Correct' in states1[i].keys():   
+                states1[i]['Correct'] += 1
+                print(states1[i])
             else:
-                states[i]['Correct'] = states[i].get('Correct', 0) +1
-                print(states[i])
+                states1[i]['Correct'] = states1[i].get('Correct', 0) +1
+                print(states1[i])
         else:
             print(f'Incorrect, the answer is {capital}')
             incorrect_score = incorrect_score + 1
             print(f'Correct: {correct_score} Incorrect:{incorrect_score}')
-            if 'Incorrect' in states[i].keys():   
-                states[i]['Incorrect'] += 1
-                print(states[i])
+            if 'Incorrect' in states1[i].keys():   
+                states1[i]['Incorrect'] += 1
+                print(states1[i])
             else:
-                states[i]['Incorrect'] = states[i].get('Incorrect', 0) +1
-                print(states[i])
+                states1[i]['Incorrect'] = states1[i].get('Incorrect', 0) +1
+                print(states1[i])
 
     final_score = correct_score - incorrect_score
     print(f'Total Score:{final_score}')
     print(f'Correct: {correct_score} Incorrect:{incorrect_score}')
     play_again = input('Would you like to play again? y or n:')
     if(play_again == 'y'):
-        game_intro()
+        featured = sorted(states1, key=lambda k: ("Incorrect" not in k, k.get("Incorrect", None)))
+        print(featured)
+        game_intro(featured)
+
     else:
         print('Thanks for playing!')
-    return states
+        exit()
 
-# def key_incrementor(state):
-#     print(state)
-#     # state['Correct'] 
 
-states = play_game()
-game_intro()
+
+
+game_intro(states)
+
+
