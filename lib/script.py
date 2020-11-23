@@ -111,6 +111,6 @@ def play_game(states1):
 
 
 
-game_intro(states1)
+game_intro(states)
 
 
